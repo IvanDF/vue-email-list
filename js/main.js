@@ -3,7 +3,8 @@ const emailGenerator = new Vue ({
     el: '#email-generator',
     data: {
         emails: [],
-        numMax: 10,
+        // while loop
+            // numMax: 0,
     },
     computed: {
 
@@ -11,7 +12,7 @@ const emailGenerator = new Vue ({
             return (this.emails.length < 10) ? false : true;
         }
 
-    },
+    },  
     created(){
 
         this.generateEmailLoop();
@@ -29,13 +30,22 @@ const emailGenerator = new Vue ({
                     console.log(error);
                 })
         },
-        generateEmailLoop() {              
+        generateEmailLoop() { 
+            // loop for             
             for (let i = 0; i < 10; i++) {
                 this.generator()
             };
+
+            // while loop
+                // while (this.numMax < 10) {
+                //     this.numMax ++
+                //     this.generator()
+                // };
         },
         generatorBtn() {
             this.emails = [];
+            // while loop
+                // this.numMax = 0;
             this.generateEmailLoop();
         },
     },
