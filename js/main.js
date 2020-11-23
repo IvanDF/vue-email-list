@@ -4,16 +4,18 @@ const emailGenerator = new Vue ({
     data: {
         emails: [], 
     },
-    compute: {
-        
+    computed: {
+
+        emailsCreated() {
+            return (this.emails.length < 10) ? false : true;
+        }
 
     },
     created(){
-
             
         for (let i = 0; i < 10; i++) {
             this.generator()
-        }
+        };
     },
     
     methods: {
@@ -21,14 +23,18 @@ const emailGenerator = new Vue ({
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then( response => {
                     // handle success
-                    console.log(response.data.response);
-                        this.emails.push(response.data.response)
-                    console.log(this.emails)
+                    this.emails.push(response.data.response)
                 })
                 .catch( error => {
                     // handle error
                     console.log(error);
                 })
-        }
+        },
+        generatorBtn() {
+            this.emails = [];
+            for (let i = 0; i < 10; i++) {
+                this.generator()
+            };
+        },
     },
 });

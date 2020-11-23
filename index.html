@@ -12,12 +12,20 @@
 <body>
 
     <div id="email-generator">
-        <ul>
-            <li v-for="email in emails"
-            >
-            {{ email }}
-            </li>
-        </ul>
+        <div class="emails" v-if="emailsCreated">
+            <h1>Email generator</h1>
+            <ul>
+                <li v-for="email in emails"
+                >
+                {{ email }}
+                </li>
+            </ul>
+            <button class="btn" @click="generatorBtn">Change e-mails</button>
+        </div>
+        <div class="loading" v-else>
+            <p>  LOADING... </p>
+            </div>
+        </div>
     </div>
     
     <!-- AXIOS -->
